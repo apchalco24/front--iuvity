@@ -1,0 +1,73 @@
+<h3 align="center" class="bg-primary py-4 text-light">Crud Usuarios</h3>
+<div class="col-12 row">
+  <div class="container col-8 col-sm-12 col-md-8">
+    <h4 align="center" class="py-3">Listar usuarios</h4>
+    <table class="table table-striped">
+      <thead align="center">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Email</th>
+          <th scope="col">Acción</th>
+        </tr>
+      </thead>
+      <tbody align="center">
+        <tr *ngFor="let item of users">
+          <th>{{item.nombres}}</th>
+          <td>{{item.apellidos}}</td>
+          <td>{{item.edad}}</td>
+          <td>{{item.email}}</td>
+          <td>
+            <div class="col-12 row">
+              <div class="col-5">
+                <button class="btn btn-success text-light" (click)="deleteUser(item.id)">Eliminar</button>
+              </div>
+              <div class="col-5">
+                <button class="btn btn-danger text-light" (click)="chargeUser(item)">Actualizar</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-4 col-sm-12 col-md-4">
+    <h4 align="center" class="py-3">Formulario usuarios</h4>
+    <form #formUser="ngForm" novalidate>
+      <div class="form-group row">
+        <div class="col-12 row py-2">
+          <p class="col-4 px-4 pt-2">Nombres</p>
+          <input autocomplete="off" class="col-8" id="nombre" type="text" maxlength="20" name="nombre"
+          [(ngModel)]="usuario.nombres"
+            placeholder="Ingrese nombres" required>
+        </div>
+        <div class="col-12 row py-2">
+          <p class="col-4 px-4 pt-2">Apellidos</p>
+          <input autocomplete="off" class="col-8" id="apellido" type="text" maxlength="20" name="apellidos"
+          [(ngModel)]="usuario.apellidos"
+            placeholder="Ingrese apellidos" required>
+        </div>
+        <div class="col-12 row py-2">
+          <p class="col-4 px-4 pt-2">Edad</p>
+          <input autocomplete="off" class="col-8" id="edad" type="text" maxlength="20" name="edad"
+          [(ngModel)]="usuario.edad"
+            placeholder="Ingrese edad" required>
+        </div>
+        <div class="col-12 row py-2">
+          <p class="col-4 px-4 pt-2">Email</p>
+          <input autocomplete="off" class="col-8" id="email" type="text" maxlength="20" name="email"
+          [(ngModel)]="usuario.email"
+            placeholder="Ingrese email" required>
+        </div>
+        <div class="col-12 text-center pt-2">
+          <button *ngIf="buttonValue === true" type="submit" class="btn btn-primary btn-lg btn-block"
+          [disabled]="!formUser.valid" (click)="createUser()">Crear</button>
+          <button *ngIf="buttonValue === false" type="submit" class="btn btn-success btn-lg btn-block"
+          (click)="updateUser()">Actualizar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
