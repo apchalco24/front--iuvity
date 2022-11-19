@@ -69,7 +69,7 @@ export class AppComponent implements OnInit {
           this.buttonValue = true;
           this.usuario = new Usuario;
           this.listUsers();
-          this.messageServiceResponse('Success','Notification','Usuario actualizado correctamente')
+          this.messageServiceResponse('success','Notificación','Usuario actualizado correctamente')
         } else {
 
         }
